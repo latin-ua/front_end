@@ -1,0 +1,23 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+// https://vuetifyjs.com/features/sass-variables/`
+// @use 'vuetify/settings' with (
+//   $color-pack: false
+// );
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("@/assets/e-Ukraine-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "e-UkraineHead";
+  src: url("@/assets/e-UkraineHead-Regular.otf") format("opentype");
+}
+
+$body-font-family: "e-Ukraine";
+$heading-font-family: "e-UkraineHead";
+
