@@ -1,0 +1,4 @@
+apiVersion: v2
+name: latin-ua-front-end
+type: application
+version: 0.1.0

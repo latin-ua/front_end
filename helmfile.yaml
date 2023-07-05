@@ -1,0 +1,7 @@
+releases:
+  - name: latin-ua-front-end
+    chart: ./chart
+    namespace: default
+    set:
+      - name: imageVersion
+        value: {{ requiredEnv "IMAGE_VERSION" }}
