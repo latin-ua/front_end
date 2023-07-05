@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.serviceName }}
+  labels:
+    app: {{ .Values.serviceName }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Values.serviceName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.serviceName }}
+    spec:
+      containers:
+      - name: app
+        image: ghcr.io/latin-ua/front_end:{{ .Values.imageVersion }}
+        ports:
+        - containerPort: {{ .Values.containerPort }}

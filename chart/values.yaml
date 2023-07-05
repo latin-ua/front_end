@@ -1,0 +1,4 @@
+imageVersion: ""
+serviceName: latin-ua-front-end
+containerPort: 8090
+servicePort: 80
