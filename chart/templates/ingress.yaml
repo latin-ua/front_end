@@ -10,8 +10,8 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: www.latin.com.ua
 spec:
   rules:
-    - host: www.latin.com.ua
-      http:
+    # - host: www.latin.com.ua
+    - http:
         paths:
           - path: /
             pathType: Prefix
