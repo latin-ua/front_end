@@ -1,7 +1,10 @@
+repositories:
+  - name: common
+    url: git+https://github.com/latin-ua/common_chart/@chart
+
 releases:
   - name: latin-ua-front-end
-    chart: ./chart
+    chart: common/common-chart
     namespace: default
-    set:
-      - name: imageVersion
-        value: {{ requiredEnv "IMAGE_VERSION" }}
+    values:
+      - values.yml.gotmpl
