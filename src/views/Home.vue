@@ -7,9 +7,17 @@
       <v-col>
         <TextArea kind="latin" v-model="appStore.translatedText"/>
       </v-col>
+      <v-col>
+        <TextArea kind="select transliteration method" v-model="appStore.translationMethod"/>
+      </v-col>
     </v-row>
     <v-row>
       <v-col>
+        <v-select
+          label="Select"
+          :items="['DSTU_A', 'KMU']"
+        >
+        </v-select>
         <v-btn
           block
           color="primary"
