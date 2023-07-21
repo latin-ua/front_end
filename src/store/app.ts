@@ -11,9 +11,12 @@ export const useAppStore = defineStore('app', () => {
     const config = {
       method: 'post',
       url: 'http://latin.com.ua/',
-      data : sourceText.value,
+      data : {
+        'translationMethod': 'DSTU_A',
+        'text': sourceText.value,
+      },
       headers: {
-        'Content-Type': 'text/plain'
+        'Content-Type': 'application/json'
       },
     };
 
