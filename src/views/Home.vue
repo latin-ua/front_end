@@ -1,6 +1,16 @@
 <template>
   <v-container>
     <v-row>
+      <v-select
+        label="Метод транслітерації"
+        density="compact"
+        :items="translationMethods"
+        item-title="title"
+        item-value="method"
+        v-model="appStore.translationMethod"
+      />
+    </v-row>
+    <v-row>  
       <v-col>
         <TextArea kind="cyrillic" autofocus v-model="appStore.sourceText"/>
       </v-col>
@@ -10,15 +20,6 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-select
-          label="Метод транслітерації"
-          density="compact"
-          :items="translationMethods"
-          item-title="title"
-          item-value="method"
-          v-model="appStore.translationMethod"
-        >
-        </v-select>
         <v-btn
           block
           color="primary"
