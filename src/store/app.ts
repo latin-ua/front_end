@@ -6,14 +6,13 @@ import axios from "axios";
 export const useAppStore = defineStore('app', () => {
   const sourceText = ref("");
   const translatedText = ref("");
-  const translationMethod = ref("");
 
   async function translate() {
     const config = {
       method: 'post',
       url: 'http://latin.com.ua/',
       data : {
-        'translationMethod': translationMethod.value,
+        'translationMethod': 'DSTU_A',
         'text': sourceText.value,
       },
       headers: {
