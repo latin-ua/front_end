@@ -7,15 +7,16 @@
       <v-col>
         <TextArea kind="latin" v-model="appStore.translatedText"/>
       </v-col>
-      <v-col>
-        <TextArea kind="select transliteration method" v-model="appStore.translationMethod"/>
-      </v-col>
     </v-row>
     <v-row>
       <v-col>
         <v-select
-          label="Select"
-          :items="['DSTU_A', 'KMU']"
+          label="Метод транслітерації"
+          density="compact"
+          :items="translationMethods"
+          item-title="title"
+          item-value="method"
+          v-model="appStore.translationMethod"
         >
         </v-select>
         <v-btn
@@ -34,6 +35,19 @@
 <script lang="ts" setup>
 import {useAppStore} from "@/store/app";
 import TextArea from "@/components/TextArea.vue";
+import { ref } from "vue";
+
+const translationMethods = ref([
+  {
+    method: "DSTU_A",
+    title: "ДСТУ - Система А"
+  },
+  {
+    method: "KMU",
+    title: "Постанова КМУ"
+  },
+])
+
 
 const appStore = useAppStore();
 </script>

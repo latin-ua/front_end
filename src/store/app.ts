@@ -6,7 +6,7 @@ import axios from "axios";
 export const useAppStore = defineStore('app', () => {
   const sourceText = ref("");
   const translatedText = ref("");
-  const translationMethod = ref("");
+  const translationMethod = ref("DSTU_A");
 
   async function translate() {
     const config = {
@@ -25,5 +25,5 @@ export const useAppStore = defineStore('app', () => {
     translatedText.value = response.data;
   }
 
-  return {sourceText, translatedText, translate};
+  return {sourceText, translatedText, translationMethod, translate};
 })
