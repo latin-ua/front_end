@@ -2,6 +2,8 @@ serviceName: latin-ua-front-end
 containerPort: 80
 servicePort: 80
 image: {{ requiredEnv "DOCKER_IMAGE" }}
-externalDnsName: 
+externalDnsName:
   - latin.com.ua
   - www.latin.com.ua
+certificateArn: "arn:aws:acm:eu-central-1:991225504892:certificate/29fa7244-2486-4c10-af1e-9050d5743aac"
+qqq
