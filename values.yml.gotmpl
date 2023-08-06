@@ -5,3 +5,4 @@ image: {{ requiredEnv "DOCKER_IMAGE" }}
 externalDnsName:
   - frontend.latin.com.ua
 certificateArn: "arn:aws:acm:eu-central-1:991225504892:certificate/6b12e2d8-6b2f-4daa-a4b6-a0715555802d"
+healthCheck: "/index.html"
