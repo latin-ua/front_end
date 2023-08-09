@@ -1,3 +1,5 @@
+wait: true
+
 repositories:
   - name: common
     url: git+https://github.com/latin-ua/common_chart/@chart

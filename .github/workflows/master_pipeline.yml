@@ -10,6 +10,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_DEFAULT_REGION: eu-central-1
+  CLOUDFRONT_DISTRIBUTION: E105UU8V5LGPMZ
 
 jobs:
   build-and-push-image:
@@ -68,3 +69,4 @@ jobs:
           source assume-role.sh
           aws eks update-kubeconfig --name main-cluster
           helmfile apply
+          aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION" --paths "/*"
