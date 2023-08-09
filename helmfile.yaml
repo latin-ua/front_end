@@ -1,4 +1,5 @@
-wait: true
+helmDefaults:
+  wait: true
 
 repositories:
   - name: common
