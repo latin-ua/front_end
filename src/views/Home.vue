@@ -4,13 +4,14 @@
       <v-select
         label="Метод транслітерації"
         density="compact"
-        :items="translationMethods"
+        :items="appStore.allTranslationMethods"
+        :loading="isTranslationMethodsLoading"
         item-title="title"
-        item-value="method"
+        item-value="code"
         v-model="appStore.translationMethod"
       />
     </v-row>
-    <v-row>  
+    <v-row>
       <v-col>
         <TextArea kind="cyrillic" autofocus v-model="appStore.sourceText"/>
       </v-col>
@@ -36,18 +37,11 @@
 <script lang="ts" setup>
 import {useAppStore} from "@/store/app";
 import TextArea from "@/components/TextArea.vue";
-import { ref } from "vue";
+import {computed, onMounted} from "vue";
 
-const translationMethods = ref([
-  {
-    method: "DSTU_A",
-    title: "ДСТУ - Система А"
-  },
-  {
-    method: "KMU",
-    title: "Постанова КМУ"
-  },
-])
+const isTranslationMethodsLoading = computed(() => appStore.allTranslationMethods.length == 0);
+
+onMounted(() => appStore.getTranslationMethods());
 
 
 const appStore = useAppStore();

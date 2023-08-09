@@ -3,10 +3,17 @@ import {defineStore} from 'pinia'
 import {ref} from "vue";
 import axios from "axios";
 
+interface TranslationMethod {
+  code: string,
+  title: string,
+}
+
+
 export const useAppStore = defineStore('app', () => {
   const sourceText = ref("");
   const translatedText = ref("");
-  const translationMethod = ref("DSTU_A");
+  const allTranslationMethods = ref<TranslationMethod[]>([])
+  const translationMethod = ref("");
 
   async function translate() {
     const config = {
@@ -25,5 +32,27 @@ export const useAppStore = defineStore('app', () => {
     translatedText.value = response.data;
   }
 
-  return {sourceText, translatedText, translationMethod, translate};
+  async function getTranslationMethods() {
+    const config = {
+      method: 'get',
+      url: 'https://api.latin.com.ua/translation-methods',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    };
+
+    const response = await axios.request<TranslationMethod[]>(config);
+    allTranslationMethods.value = response.data;
+    translationMethod.value = response.data[0].code;
+  }
+
+
+  return {
+    allTranslationMethods,
+    sourceText,
+    translatedText,
+    translationMethod,
+    translate,
+    getTranslationMethods,
+  };
 })
