@@ -18,7 +18,7 @@ export const useAppStore = defineStore('app', () => {
   async function translate() {
     const config = {
       method: 'post',
-      url: 'https://api.latin.com.ua/api/translate',
+      url: '/api/translate',
       data : {
         'translationMethod': translationMethod.value,
         'text': sourceText.value,
@@ -35,7 +35,7 @@ export const useAppStore = defineStore('app', () => {
   async function getTranslationMethods() {
     const config = {
       method: 'get',
-      url: 'https://api.latin.com.ua/api/translation-methods',
+      url: '/api/translation-methods',
       headers: {
         'Content-Type': 'application/json'
       },
