@@ -23,6 +23,7 @@ jobs:
 
       - name: Build static website
         run: |
+          set -uex
           yarn
           yarn build
 
@@ -46,8 +47,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: dist
+          path: dist
       - name: Upload to S3
         run: |
+          set -uex
           source assume-role.sh
           aws s3 sync dist/ "${S3_BUCKET}" --delete
           aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION" --paths "/*"
